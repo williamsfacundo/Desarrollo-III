@@ -7,18 +7,18 @@ namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms
     public class Rifle : Firearm
     {
         public Rifle() : base(
-            new AmmoBag(RifleInitialStats.MaxAmmo),
+            new AmmoBag(true),
             new Canyon(RifleInitialStats.FireRate, RifleInitialStats.Damage, RifleInitialStats.FireCapacity),
             new Magazine(RifleInitialStats.MagazineSize, RifleInitialStats.ReloadTime))
         {
 
         }
 
-        public override void FireWeapon() //Cambiar shoot por fire
+        public override void FireWeapon(Vector3 playerPosition) //Cambiar shoot por fire
         {
             Debug.Log("Rifle fired!");
 
-            base.FireWeapon();
+            base.FireWeapon(playerPosition);
         }
 
         public override void ReloadWeapon()

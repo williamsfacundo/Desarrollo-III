@@ -35,7 +35,7 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
 
                     if (!auxFirearm.Magazine.MagazineEmpty()) 
                     {
-                        auxFirearm.FireWeapon();
+                        auxFirearm.FireWeapon(gameObject.transform.position);
                     }                    
                 }               
             }
