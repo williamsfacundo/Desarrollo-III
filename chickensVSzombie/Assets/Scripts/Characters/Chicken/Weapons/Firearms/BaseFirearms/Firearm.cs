@@ -13,7 +13,7 @@ namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms
 
         private Magazine _magazine;
 
-        Camera camera;
+        Camera _camera;
 
         public AmmoBag AmmoBag 
         {
@@ -47,7 +47,7 @@ namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms
 
             _magazine = magazine;
 
-            camera = Camera.main;
+            _camera = Camera.main;
         }
 
         public virtual void FireWeapon(Vector3 playerPosition)
@@ -60,7 +60,7 @@ namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms
 
             bulletScript.BulletDamage = _canyon.Damage;           
 
-            bulletScript.BulletMoveDirection = Vector3.Normalize(camera.ScreenToWorldPoint(Input.mousePosition) - playerPosition); // Direction is not ok
+            bulletScript.BulletMoveDirection = Vector3.Normalize(_camera.ScreenToWorldPoint(Input.mousePosition) - playerPosition); // Direction is not ok
 
             _magazine.BulletsInMagazine -= _canyon.FireCapacity;
 
