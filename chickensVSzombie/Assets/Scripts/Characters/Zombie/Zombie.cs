@@ -4,9 +4,9 @@ namespace ChickenVSZombies.Characters.Zombies
 {
     public class Zombie : MonoBehaviour
     {
-        private float _life;
-
-        private GameObject target;
+        [SerializeField] private float _initialZombieLife;
+        
+        private float _life;        
 
         void Start()
         {

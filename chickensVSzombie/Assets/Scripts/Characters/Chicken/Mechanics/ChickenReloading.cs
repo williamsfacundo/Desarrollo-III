@@ -3,7 +3,7 @@ using ChickenVSZombies.Characters.Chicken.Weapons.Firearms;
 
 namespace ChickenVSZombies.Characters.Chicken.Mechanics
 {
-    [RequireComponent(typeof(Chicken))]
+    //[RequireComponent(typeof(Chicken))]
     public class ChickenReloading : MonoBehaviour
     {
         private Chicken _chicken;

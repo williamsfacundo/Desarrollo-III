@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Bullets 
 {
-    public class Bullet : MonoBehaviour
+    public class Bullet : MonoBehaviour //Change bullet for bullet movement
     {
         [SerializeField] private float _bulletVelocity = 6f;
 

@@ -6,7 +6,7 @@ namespace ChickenVSZombies.Characters.Chicken
 {
     public class Chicken : MonoBehaviour
     {
-        [SerializeField] private float _initialLife;
+        [SerializeField] private float _initialChickenLife;
 
         private ChickenInventory _chickenInventory;
 
@@ -16,7 +16,7 @@ namespace ChickenVSZombies.Characters.Chicken
 
         private IEquippableItem _equippedItem;
 
-        public static event Action OnChickenDeath;                            
+        //public static event Action OnChickenDeath;                            
 
         public short Score
         {
@@ -38,7 +38,7 @@ namespace ChickenVSZombies.Characters.Chicken
         {
             _chickenInventory = new ChickenInventory();
 
-            _life = _initialLife;
+            _life = _initialChickenLife;
 
             _score = 0;
 
@@ -66,7 +66,7 @@ namespace ChickenVSZombies.Characters.Chicken
         {
             if (_life <= 0f)
             {
-                OnChickenDeath();
+                //OnChickenDeath();
             }
         }
 

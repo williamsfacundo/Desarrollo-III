@@ -9,7 +9,7 @@ namespace ChickenVSZombies.Base
 
         private float _baseLife;
 
-        public static event Action OnBaseDestroyed;
+        //public static event Action OnBaseDestroyed;
 
         public float BaseLife 
         {           

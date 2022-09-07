@@ -3,7 +3,7 @@ using ChickenVSZombies.Characters.Enums;
 
 namespace ChickenVSZombies.Characters.Chicken.Mechanics
 {
-    [RequireComponent(typeof(Chicken))]
+    //[RequireComponent(typeof(Chicken))]
     public class ChickenMovement : MonoBehaviour
     {
         [SerializeField] private float _chickenMoveVelocity;
