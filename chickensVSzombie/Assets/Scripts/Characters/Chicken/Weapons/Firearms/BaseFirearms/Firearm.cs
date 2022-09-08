@@ -58,9 +58,17 @@ namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms
                         
             Bullet bulletScript = bulletObject.GetComponent<Bullet>();            
 
-            bulletScript.BulletDamage = _canyon.Damage;           
+            bulletScript.BulletDamage = _canyon.Damage;
 
-            bulletScript.BulletMoveDirection = Vector3.Normalize(_camera.ScreenToWorldPoint(Input.mousePosition) - playerPosition); // Direction is not ok
+            //Vector3 aux = _camera.ScreenToWorldPoint(Input.mousePosition) - playerPosition;
+
+            //Debug.Log(aux);           
+
+            bulletScript.BulletMoveDirection = Vector3.Normalize(_camera.ScreenToWorldPoint(Input.mousePosition) - playerPosition);
+
+            //Debug.Log(Vector3.Normalize(aux));
+
+            //Debug.Log(Vector3.Magnitude(Vector3.Normalize(aux)));
 
             _magazine.BulletsInMagazine -= _canyon.FireCapacity;            
         }       

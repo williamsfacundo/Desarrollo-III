@@ -4,9 +4,11 @@ using ChickenVSZombies.Characters.Chicken.Interfaces;
 
 namespace ChickenVSZombies.Characters.Chicken
 {
-    public class Chicken : MonoBehaviour
+    public class Chicken : MonoBehaviour //Change for chickenHealth
     {
         [SerializeField] private float _initialChickenLife;
+
+        [SerializeField] private GameObject _initialPosition;
 
         private ChickenInventory _chickenInventory;
 
@@ -36,21 +38,19 @@ namespace ChickenVSZombies.Characters.Chicken
 
         void Awake()
         {
-            _chickenInventory = new ChickenInventory();
+            _chickenInventory = new ChickenInventory();            
+        }
 
+        private void Start()
+        {
             _life = _initialChickenLife;
 
             _score = 0;
 
             _equippedItem = _chickenInventory.Items[0];
-        }
 
-        void Update()
-        {
-            //ChangeInventoryItem();
-
-            ChickenDied();
-        }
+            transform.position = _initialPosition.transform.position;
+        }       
 
         public bool IsChickenDead()
         {
@@ -66,8 +66,18 @@ namespace ChickenVSZombies.Characters.Chicken
         {
             if (_life <= 0f)
             {
+                Application.Quit();
                 //OnChickenDeath();
             }
+        }
+
+        public void ReceiveDamage(float amountOfDamage) //Function repeats in Zombie als
+        { 
+            _life -= amountOfDamage;
+
+            Debug.Log(_life);
+
+            ChickenDied();
         }
 
         /*private void ChangeInventoryItem() 

@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -1413404977012310424}
   m_Layer: 0
   m_Name: Chicken
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initialChickenLife: 100
+  _initialPosition: {fileID: 0}
 --- !u!50 &-3737592954247653657
 Rigidbody2D:
   serializedVersion: 4

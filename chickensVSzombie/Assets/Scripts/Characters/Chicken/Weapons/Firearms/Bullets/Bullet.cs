@@ -34,8 +34,7 @@ namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Bullets
         {
             _bulletDamage = 10;
         }
-
-        // Update is called once per frame
+        
         void Update()
         {
             MoveBullet();
@@ -43,7 +42,7 @@ namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Bullets
 
         private void MoveBullet() 
         {
-            transform.position += _bulletMoveDirection * _bulletVelocity * Time.deltaTime;
+            transform.position += _bulletMoveDirection * _bulletVelocity * Time.deltaTime;            
         }
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using ChickenVSZombies.Characters.Chicken;
 
 namespace ChickenVSZombies.Characters.Zombies 
 {
@@ -74,6 +75,18 @@ namespace ChickenVSZombies.Characters.Zombies
                 {
                     _attackCooldownTimer = 0f;
                 }
+            }
+        }
+
+        private void OnCollisionStay2D(Collision2D collision)
+        {
+            if (collision.transform.tag == "Player" && _attackCooldownTimer == 0f) 
+            {
+                Chicken.Chicken chicken = collision.gameObject.GetComponent<Chicken.Chicken>();
+
+                chicken.ReceiveDamage(_zombieDamage);
+
+                _attackCooldownTimer = _zombieAttackCooldownTime;
             }
         }
     }

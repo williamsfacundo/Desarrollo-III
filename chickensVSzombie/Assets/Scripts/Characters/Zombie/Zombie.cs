@@ -3,7 +3,7 @@ using ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Bullets;
 
 namespace ChickenVSZombies.Characters.Zombies 
 {
-    public class Zombie : MonoBehaviour
+    public class Zombie : MonoBehaviour //Change for Zombie Health
     {
         [SerializeField] private float _initialZombieLife;
         
@@ -28,10 +28,7 @@ namespace ChickenVSZombies.Characters.Zombies
         {
             if (collision.transform.tag == "Bullet")
             {
-                Bullet bullet = collision.gameObject.GetComponent<Bullet>();
-
-                Debug.Log(_life);
-                Debug.Log(bullet.BulletDamage);
+                Bullet bullet = collision.gameObject.GetComponent<Bullet>();                
 
                 ReceiveDamage(bullet.BulletDamage);
 
