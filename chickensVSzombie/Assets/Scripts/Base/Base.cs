@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ChickenVSZombies.Base 
 {
-    public class Base : MonoBehaviour
+    public class Base : MonoBehaviour //Change name for EggBase
     {
         [SerializeField] private float _initialBaseLife;
 
@@ -28,6 +28,8 @@ namespace ChickenVSZombies.Base
         public void ReceiveDamage(float damage) 
         {
             _baseLife -= damage;
+
+            Debug.Log(_baseLife);
 
             if (_baseLife <= 0) 
             {

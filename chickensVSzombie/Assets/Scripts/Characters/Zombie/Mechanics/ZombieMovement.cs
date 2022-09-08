@@ -9,16 +9,32 @@ namespace ChickenVSZombies.Characters.Zombies
 
         private GameObject _target;
 
-        private bool _isZombieCollidingWithBase;
+        private bool _isZombieCollidingWithTarget;
 
-        void Awake()
+        public GameObject Target 
+        {
+            get 
+            {
+                return _target;
+            }
+        }
+
+        public bool IsZombieCollidingWithTarget 
+        {
+            get 
+            {
+                return _isZombieCollidingWithTarget;
+            }
+        }
+
+        void Awake() //What happens if the target was not found?
         {            
             _target = FindObjectOfType<Base.Base>().gameObject;            
         }
 
         private void Start()
         {
-            _isZombieCollidingWithBase = false;
+            _isZombieCollidingWithTarget = false;
         }
 
         void Update()
@@ -30,7 +46,7 @@ namespace ChickenVSZombies.Characters.Zombies
         {
             if (collision.transform.tag == "Base")
             {
-                _isZombieCollidingWithBase = true;
+                _isZombieCollidingWithTarget = true;
             }
         }
 
@@ -38,13 +54,13 @@ namespace ChickenVSZombies.Characters.Zombies
         {
             if (collision.transform.tag == "Base")
             {
-                _isZombieCollidingWithBase = false;
+                _isZombieCollidingWithTarget = false;
             }
         }
 
         private void MoveTowardsTheTarget() 
         {
-            if (!_isZombieCollidingWithBase) 
+            if (!_isZombieCollidingWithTarget) 
             {
                 gameObject.transform.position += CalculateDirectionToMoveTowardsTheTarget() * Time.deltaTime * _zombieMoveVelocity;
             }            
