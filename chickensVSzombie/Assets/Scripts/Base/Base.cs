@@ -27,12 +27,11 @@ namespace ChickenVSZombies.Base
 
         public void ReceiveDamage(float damage) 
         {
-            _baseLife -= damage;
-
-            Debug.Log(_baseLife);
+            _baseLife -= damage;            
 
             if (_baseLife <= 0) 
             {
+                Application.Quit();
                 //OnBaseDestroyed();
             }
         }
