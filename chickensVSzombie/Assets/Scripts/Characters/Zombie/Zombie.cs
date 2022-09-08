@@ -1,4 +1,5 @@
 using UnityEngine;
+using ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Bullets;
 
 namespace ChickenVSZombies.Characters.Zombies 
 {
@@ -10,29 +11,32 @@ namespace ChickenVSZombies.Characters.Zombies
 
         void Start()
         {
-            
-        }
-        
-        void Update()
-        {
-            MoveToTarget();
-        }
-
-        private void MoveToTarget() 
-        {
-
-        }       
+            _life = _initialZombieLife;
+        }     
 
         public void ReceiveDamage(float amountOfDamage) 
         {
-            _life -= amountOfDamage;
+            _life -= amountOfDamage;            
 
             if (_life <= 0) 
             {
-                Debug.Log("Zombie died!");
-
                 Destroy(gameObject);                
             }
         }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.transform.tag == "Bullet")
+            {
+                Bullet bullet = collision.gameObject.GetComponent<Bullet>();
+
+                Debug.Log(_life);
+                Debug.Log(bullet.BulletDamage);
+
+                ReceiveDamage(bullet.BulletDamage);
+
+                Destroy(collision.gameObject);
+            }
+        }        
     }
 }

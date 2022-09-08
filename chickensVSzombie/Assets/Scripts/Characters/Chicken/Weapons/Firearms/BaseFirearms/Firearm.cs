@@ -62,9 +62,7 @@ namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms
 
             bulletScript.BulletMoveDirection = Vector3.Normalize(_camera.ScreenToWorldPoint(Input.mousePosition) - playerPosition); // Direction is not ok
 
-            _magazine.BulletsInMagazine -= _canyon.FireCapacity;
-
-            Debug.Log("Bullets: " + _magazine.BulletsInMagazine);
+            _magazine.BulletsInMagazine -= _canyon.FireCapacity;            
         }       
 
         public virtual void ReloadWeapon() 

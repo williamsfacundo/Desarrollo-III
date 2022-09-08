@@ -6,7 +6,7 @@ namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Bullets
     {
         [SerializeField] private float _bulletVelocity = 6f;
 
-        private float _bulletDamage = 0; // Collision with zombies (not implemented)
+        private float _bulletDamage;
 
         private Vector3 _bulletMoveDirection = Vector2.zero;
 
@@ -16,6 +16,10 @@ namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Bullets
             {
                 _bulletDamage = value;
             }
+            get 
+            {
+                return _bulletDamage;
+            }
         }
 
         public Vector2 BulletMoveDirection 
@@ -24,7 +28,12 @@ namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Bullets
             {
                 _bulletMoveDirection = value;
             }
-        }        
+        }
+
+        void Start()
+        {
+            _bulletDamage = 10;
+        }
 
         // Update is called once per frame
         void Update()
