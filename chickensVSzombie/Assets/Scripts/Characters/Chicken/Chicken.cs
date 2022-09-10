@@ -4,7 +4,7 @@ using ChickenVSZombies.Characters.Chicken.Interfaces;
 
 namespace ChickenVSZombies.Characters.Chicken
 {
-    public class Chicken : MonoBehaviour //Change for chickenHealth
+    public class Chicken : MonoBehaviour //Change for chickenHealth (fist separe what is health from what is score)
     {
         [SerializeField] private float _initialChickenLife;        
 
@@ -62,10 +62,8 @@ namespace ChickenVSZombies.Characters.Chicken
         {
             if (_life <= 0f)
             {
-                Application.Quit();
-
-                if (OnChickenDeath != null) 
-                {
+                if (OnChickenDeath != null)
+                {                    
                     OnChickenDeath();
                 }
             }
@@ -73,9 +71,7 @@ namespace ChickenVSZombies.Characters.Chicken
 
         public void ReceiveDamage(float amountOfDamage) //Function repeats in Zombie als
         { 
-            _life -= amountOfDamage;
-
-            Debug.Log(_life);
+            _life -= amountOfDamage;           
 
             ChickenDied();
         }        

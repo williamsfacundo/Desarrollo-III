@@ -21,7 +21,7 @@ namespace ChickenVSZombies.GameplayItems
 
         private void OnEnable()
         {
-            ChickenMovement.OnChickenMoved += UpdateCameraPosition;
+            ChickenMovement.OnChickenMoved += UpdateCameraPosition;            
         }
 
         private void OnDisable()

@@ -1,9 +1,12 @@
+using System;
 using UnityEngine;
 
 namespace ChickenVSZombies.GameplayItems 
 {
     public class EndGameTimer : MonoBehaviour
     {
+        public static event Action OnTimerEnds; 
+
         private float _gameplayDuration;
 
         private float _endGameTimer; //In order not to repeat so many times timer creat a class timer
@@ -26,8 +29,10 @@ namespace ChickenVSZombies.GameplayItems
 
             if (_endGameTimer <= 0f)
             {
-                Debug.Log("End game");
-                Application.Quit();
+                if (OnTimerEnds != null) 
+                {
+                    OnTimerEnds(); 
+                }               
             }
         }
     }

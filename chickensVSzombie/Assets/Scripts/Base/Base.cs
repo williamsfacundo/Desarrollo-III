@@ -7,9 +7,9 @@ namespace ChickenVSZombies.Base
     {
         [SerializeField] private float _initialBaseLife;
 
-        private float _baseLife;
+        public static event Action OnBaseDestroyed;
 
-        //public static event Action OnBaseDestroyed;
+        private float _baseLife;        
 
         public float BaseLife 
         {           
@@ -31,8 +31,10 @@ namespace ChickenVSZombies.Base
 
             if (_baseLife <= 0) 
             {
-                Application.Quit();
-                //OnBaseDestroyed();
+                if (OnBaseDestroyed != null) 
+                {
+                    OnBaseDestroyed();
+                }               
             }
         }
     }
