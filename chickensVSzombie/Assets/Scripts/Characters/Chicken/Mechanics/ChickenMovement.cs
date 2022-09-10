@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using ChickenVSZombies.Characters.Enums;
 
@@ -6,15 +7,19 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
     //[RequireComponent(typeof(Chicken))]
     public class ChickenMovement : MonoBehaviour
     {
+        [SerializeField] private GameObject _initialPosition;
+
         [SerializeField] private float _chickenMoveVelocity;
 
         private Chicken _chicken;
+
+        public static event Action OnChickenMoved; 
 
         private Direction _chickenMoveDirection;
 
         private short _horizontalInputDetection;
 
-        private short _verticalInputDetection;
+        private short _verticalInputDetection;        
 
         private void Awake()
         {
@@ -23,10 +28,14 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
 
         void Start()
         {
+            transform.position = _initialPosition.transform.position;
+
+            OnChickenMoved();
+
             _chickenMoveDirection = Direction.NONE;
 
             _horizontalInputDetection = 0;
-            _verticalInputDetection = 0;
+            _verticalInputDetection = 0;            
         }
 
         void Update()
@@ -67,7 +76,12 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
 
                 if (_chickenMoveDirection != Direction.NONE) 
                 { 
-                    MoveChicken(); 
+                    MoveChicken();
+                    
+                    if (OnChickenMoved != null) 
+                    {
+                        OnChickenMoved();
+                    }                    
                 }
             }            
         }
@@ -145,7 +159,6 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
                     transform.position += new Vector3(-_chickenMoveVelocity, _chickenMoveVelocity) * Time.deltaTime;
                     break;
                 default:
-
                     break;
             }
         }

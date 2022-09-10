@@ -6,9 +6,7 @@ namespace ChickenVSZombies.Characters.Chicken
 {
     public class Chicken : MonoBehaviour //Change for chickenHealth
     {
-        [SerializeField] private float _initialChickenLife;
-
-        [SerializeField] private GameObject _initialPosition;
+        [SerializeField] private float _initialChickenLife;        
 
         private ChickenInventory _chickenInventory;
 
@@ -18,7 +16,7 @@ namespace ChickenVSZombies.Characters.Chicken
 
         private IEquippableItem _equippedItem;
 
-        //public static event Action OnChickenDeath;                            
+        public static event Action OnChickenDeath;                            
 
         public short Score
         {
@@ -47,9 +45,7 @@ namespace ChickenVSZombies.Characters.Chicken
 
             _score = 0;
 
-            _equippedItem = _chickenInventory.Items[0];
-
-            transform.position = _initialPosition.transform.position;
+            _equippedItem = _chickenInventory.Items[0];            
         }       
 
         public bool IsChickenDead()
@@ -67,7 +63,11 @@ namespace ChickenVSZombies.Characters.Chicken
             if (_life <= 0f)
             {
                 Application.Quit();
-                //OnChickenDeath();
+
+                if (OnChickenDeath != null) 
+                {
+                    OnChickenDeath();
+                }
             }
         }
 
@@ -78,14 +78,6 @@ namespace ChickenVSZombies.Characters.Chicken
             Debug.Log(_life);
 
             ChickenDied();
-        }
-
-        /*private void ChangeInventoryItem() 
-        {
-            if (_life > 0f) 
-            {
-                //Change the object in the hand with other of the inventory
-            }
-        }*/
+        }        
     }
 }
