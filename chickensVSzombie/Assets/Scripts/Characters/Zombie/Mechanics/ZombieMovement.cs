@@ -1,5 +1,5 @@
 using UnityEngine;
-//using ChickenVSZombies.Base;
+using ChickenVSZombies.Base;
 
 namespace ChickenVSZombies.Characters.Zombies 
 {
@@ -29,7 +29,7 @@ namespace ChickenVSZombies.Characters.Zombies
 
         void Awake() //What happens if the target was not found?
         {            
-            _target = FindObjectOfType<Base.Base>().gameObject;            
+            _target = FindObjectOfType<EggBase>().gameObject;            
         }
 
         private void Start()

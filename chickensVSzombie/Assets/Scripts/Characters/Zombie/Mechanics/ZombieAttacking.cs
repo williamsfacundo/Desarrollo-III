@@ -1,5 +1,6 @@
 using UnityEngine;
 using ChickenVSZombies.Characters.Chicken;
+using ChickenVSZombies.Base;
 
 namespace ChickenVSZombies.Characters.Zombies 
 {
@@ -12,7 +13,7 @@ namespace ChickenVSZombies.Characters.Zombies
 
         private ZombieMovement _zombieMovement;
 
-        private Base.Base _base;
+        private EggBase _base;
 
         private float _zombieDamage;
 
@@ -27,7 +28,7 @@ namespace ChickenVSZombies.Characters.Zombies
 
         void Start()
         {
-            _base = _zombieMovement.Target.GetComponent<Base.Base>();
+            _base = _zombieMovement.Target.GetComponent<EggBase>();
 
             _zombieDamage = _zombieInitialDamage;
 
