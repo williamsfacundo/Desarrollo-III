@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3536903030896442173}
   - component: {fileID: -8290856188589662859}
   - component: {fileID: -2272972485131481282}
+  - component: {fileID: 4402961985263420341}
   - component: {fileID: 6125467892630695068}
   - component: {fileID: -3737592954247653657}
   - component: {fileID: -1413404977012310424}
@@ -100,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3bb883e63cf69e4fb7aab898266208c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _initialPosition: {fileID: 0}
   _chickenMoveVelocity: 2.2
 --- !u!114 &-8290856188589662859
 MonoBehaviour:
@@ -125,6 +127,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baf45e63332d4ec4abd40e243105927c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4402961985263420341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3536903030896442170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d306fe4983f57694399b2328dfd4833a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6125467892630695068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +152,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initialChickenLife: 100
-  _initialPosition: {fileID: 0}
 --- !u!50 &-3737592954247653657
 Rigidbody2D:
   serializedVersion: 4

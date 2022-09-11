@@ -1,12 +1,14 @@
 using UnityEngine;
-using ChickenVSZombies.Characters.Chicken.Weapons.Firearms;
 
 namespace ChickenVSZombies.Characters.Chicken.Mechanics
 {
     //[RequireComponent(typeof(Chicken))]
+    //[RequireComponent(typeof(ChickenInventory))]
     public class ChickenReloading : MonoBehaviour
     {
         private Chicken _chicken;
+
+        private ChickenInventory _chickenInventory;
 
         private const KeyCode ReloadButton = KeyCode.R;
 
@@ -25,6 +27,8 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
         void Awake()
         {
             _chicken = GetComponent<Chicken>();
+
+            _chickenInventory = GetComponent<ChickenInventory>();
         }
 
         private void Start()
@@ -52,17 +56,13 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
         {
             if (Input.GetKeyDown(ReloadButton))
             {
-                if (_chicken.EquippedItem is Firearm && !_chicken.IsChickenDead())
+                if (!_chicken.IsChickenDead() && _chickenInventory.EquippedWeapon.Magazine.IsMagazineAbleToBeReloaded() 
+                    && _chickenInventory.EquippedWeapon.AmmoBag.IsThereAnyAmmoLeft())
                 {
-                    Firearm auxFirearm = ((Firearm)_chicken.EquippedItem);
+                    _reloadingTimer = _chickenInventory.EquippedWeapon.Magazine.ReloadTime;
 
-                    if (auxFirearm.Magazine.IsMagazineAbleToBeReloaded() && auxFirearm.AmmoBag.IsThereAnyAmmoLeft())
-                    {
-                        _reloadingTimer = auxFirearm.Magazine.ReloadTime;
-
-                        _watingToReload = true;
-                    }                   
-                }               
+                    _watingToReload = true;
+                }
             }
         }
 
@@ -83,7 +83,7 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
         {
             if (_reloadingTimer == 0f) 
             {
-                ((Firearm)_chicken.EquippedItem).ReloadWeapon();
+                _chickenInventory.EquippedWeapon.ReloadWeapon();
 
                 _watingToReload = false;
             }           

@@ -14,7 +14,7 @@ namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms
 
         }
 
-        public override void FireWeapon(Vector3 playerPosition) //Cambiar shoot por fire
+        public override void FireWeapon(Vector3 playerPosition)
         {
             base.FireWeapon(playerPosition);
         }

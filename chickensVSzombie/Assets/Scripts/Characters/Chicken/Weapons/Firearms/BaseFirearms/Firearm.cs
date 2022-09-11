@@ -1,11 +1,10 @@
 using UnityEngine;
 using ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Parts;
-using ChickenVSZombies.Characters.Chicken.Interfaces;
 using ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Bullets;
 
 namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms
 {
-    public abstract class Firearm : IEquippableItem
+    public abstract class Firearm
     {
         private AmmoBag _ammoBag;
 
@@ -58,18 +57,10 @@ namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms
                         
             Bullet bulletScript = bulletObject.GetComponent<Bullet>();            
 
-            bulletScript.BulletDamage = _canyon.Damage;
-
-            //Vector3 aux = _camera.ScreenToWorldPoint(Input.mousePosition) - playerPosition;
-
-            //Debug.Log(aux);           
+            bulletScript.BulletDamage = _canyon.Damage;                      
 
             bulletScript.BulletMoveDirection = Vector3.Normalize(_camera.ScreenToWorldPoint(Input.mousePosition) - playerPosition);
-
-            //Debug.Log(Vector3.Normalize(aux));
-
-            //Debug.Log(Vector3.Magnitude(Vector3.Normalize(aux)));
-
+            
             _magazine.BulletsInMagazine -= _canyon.FireCapacity;            
         }       
 

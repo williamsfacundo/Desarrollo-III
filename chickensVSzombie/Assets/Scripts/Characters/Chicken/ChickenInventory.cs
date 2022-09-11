@@ -1,28 +1,23 @@
-using System.Collections.Generic;
-using ChickenVSZombies.Characters.Chicken.Interfaces;
+using UnityEngine;
 using ChickenVSZombies.Characters.Chicken.Weapons.Firearms;
 
 namespace ChickenVSZombies.Characters.Chicken
 {
-    public class ChickenInventory
+    public class ChickenInventory : MonoBehaviour
     {
-        //private const short inventoryInitialSize = 2; Para cuando el inventario tenga mas de un objeto
+        private Firearm _equippedWeapon;
 
-        private List<IEquippableItem> _items;
-
-        public List<IEquippableItem> Items
+        public Firearm EquippedWeapon 
         {
-            get
+            get 
             {
-                return _items;
+                return _equippedWeapon;
             }
         }
 
-        public ChickenInventory()
+        void Start()
         {
-            _items = new List<IEquippableItem>();
-
-            _items.Add(new Rifle()); //Por ahora el jugador solo contara con un rifle en el inventario
-        }
+            _equippedWeapon = new Rifle();
+        }        
     }
 }

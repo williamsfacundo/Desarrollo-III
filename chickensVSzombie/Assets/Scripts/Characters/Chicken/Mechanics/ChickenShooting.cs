@@ -1,15 +1,17 @@
 using UnityEngine;
-using ChickenVSZombies.Characters.Chicken.Weapons.Firearms;
 
 namespace ChickenVSZombies.Characters.Chicken.Mechanics
 {
     //[RequireComponent(typeof(Chicken))]
     //[RequireComponent(typeof(ChickenReloading))]
+    //[RequireComponent(typeof(ChickenInventory))]
     public class ChickenShooting : MonoBehaviour
     {
         private Chicken _chicken;
 
         private ChickenReloading _chickenReloading;
+        
+        private ChickenInventory _chickenInventory;
 
         private const int ShootingActionMouseButton = 0;
 
@@ -18,6 +20,8 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
             _chicken = GetComponent<Chicken>();
 
             _chickenReloading = GetComponent<ChickenReloading>();
+
+            _chickenInventory = GetComponent<ChickenInventory>();
         }
 
         void Update()
@@ -29,14 +33,10 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
         {
             if (Input.GetMouseButtonDown(ShootingActionMouseButton))
             {
-                if (_chicken.EquippedItem is Firearm && !_chicken.IsChickenDead() && !_chickenReloading.WatingToReload)
-                {
-                    Firearm auxFirearm = ((Firearm)_chicken.EquippedItem);
-
-                    if (!auxFirearm.Magazine.MagazineEmpty()) 
-                    {
-                        auxFirearm.FireWeapon(gameObject.transform.position);
-                    }                    
+                if (!_chicken.IsChickenDead() && !_chickenReloading.WatingToReload 
+                    && !_chickenInventory.EquippedWeapon.Magazine.MagazineEmpty())
+                {                    
+                    _chickenInventory.EquippedWeapon.FireWeapon(gameObject.transform.position);
                 }               
             }
         }
