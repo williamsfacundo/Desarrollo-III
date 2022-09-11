@@ -18,8 +18,7 @@ namespace ChickenVSZombies.Base
                 return _baseLife;
             }
         }
-
-        // Start is called before the first frame update
+        
         void Start()
         {
             _baseLife = _initialBaseLife; 
