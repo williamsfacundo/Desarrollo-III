@@ -7,12 +7,21 @@ namespace ChickenVSZombies.Characters.Zombies
     {
         [SerializeField] private float _initialZombieLife;
         
+        public static int ZombiesInstances = 0;
+
         private float _life;        
 
         void Start()
         {
             _life = _initialZombieLife;
-        }     
+            
+            ZombiesInstances++;
+        }
+
+        private void OnDestroy()
+        {            
+            ZombiesInstances--;
+        }
 
         public void ReceiveDamage(float amountOfDamage) 
         {
@@ -22,6 +31,11 @@ namespace ChickenVSZombies.Characters.Zombies
             {
                 Destroy(gameObject);                
             }
+        }
+
+        public void DestroyZombie() 
+        {
+            Destroy(gameObject);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
