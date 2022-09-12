@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Bullets 
 {
-    public class Bullet : MonoBehaviour //Damage is harcoded, must be changed 
+    public class Bullet : MonoBehaviour 
     {
         [SerializeField] private float _bulletVelocity;
 

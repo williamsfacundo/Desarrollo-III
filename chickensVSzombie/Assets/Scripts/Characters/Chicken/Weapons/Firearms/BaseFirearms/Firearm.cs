@@ -4,7 +4,7 @@ using ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Bullets;
 
 namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms
 {
-    public abstract class Firearm
+    public class Firearm
     {
         private AmmoBag _ammoBag;
 
@@ -49,7 +49,7 @@ namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms
             _camera = Camera.main;
         }
 
-        public virtual void FireWeapon(Vector3 playerPosition)
+        public void FireWeapon(Vector3 playerPosition)
         {
             GameObject bulletObject = GameObject.Instantiate<GameObject>((GameObject)Resources.Load("Bullet"));
 
@@ -70,7 +70,7 @@ namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms
             _magazine.BulletsInMagazine -= _canyon.FireCapacity;            
         }       
 
-        public virtual void ReloadWeapon() 
+        public void ReloadWeapon() 
         {
             if (_ammoBag.IsAmmoInfinite) 
             {

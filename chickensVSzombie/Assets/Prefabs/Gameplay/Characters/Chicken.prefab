@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d306fe4983f57694399b2328dfd4833a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _firearmStats: {fileID: 11400000, guid: 5030469c51a3125429ffbf61205ac641, type: 2}
 --- !u!114 &-684310870006986197
 MonoBehaviour:
   m_ObjectHideFlags: 0
