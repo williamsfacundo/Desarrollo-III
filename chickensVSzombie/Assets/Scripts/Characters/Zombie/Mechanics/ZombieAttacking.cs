@@ -83,7 +83,7 @@ namespace ChickenVSZombies.Characters.Zombies
         {
             if (collision.transform.tag == "Player" && _attackCooldownTimer == 0f) 
             {
-                Chicken.Chicken chicken = collision.gameObject.GetComponent<Chicken.Chicken>();
+                Chicken.ChickenHealth chicken = collision.gameObject.GetComponent<Chicken.ChickenHealth>();
 
                 chicken.ReceiveDamage(_zombieDamage);
 

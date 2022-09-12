@@ -12,7 +12,7 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
 
         [SerializeField] private float _chickenMoveVelocity;
 
-        private Chicken _chicken;
+        private ChickenHealth _chicken;
 
         public static event Action OnChickenMoved; 
 
@@ -24,7 +24,7 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
 
         private void Awake()
         {
-            _chicken = GetComponent<Chicken>();
+            _chicken = GetComponent<ChickenHealth>();
         }
 
         void Start()

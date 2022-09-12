@@ -11,7 +11,7 @@ namespace ChickenVSZombies.GameplayItems
 
         void OnEnable()
         {
-            Chicken.OnChickenDeath += ResetGameplay;
+            ChickenHealth.OnChickenDeath += ResetGameplay;
 
             EggBase.OnBaseDestroyed += ResetGameplay;
 
@@ -20,7 +20,7 @@ namespace ChickenVSZombies.GameplayItems
 
         void OnDisable()
         {
-            Chicken.OnChickenDeath -= ResetGameplay;
+            ChickenHealth.OnChickenDeath -= ResetGameplay;
 
             EggBase.OnBaseDestroyed -= ResetGameplay;
 

@@ -4,23 +4,13 @@ using ChickenVSZombies.GameplayItems;
 
 namespace ChickenVSZombies.Characters.Chicken
 {
-    public class Chicken : MonoBehaviour //Change for chickenHealth (first separe what is health from what is score)
+    public class ChickenHealth : MonoBehaviour
     {
         [SerializeField] private float _initialChickenLife;    
 
-        private float _life;
+        private float _life;                
 
-        private short _score; // Show score in UI (not implemented)        
-
-        public static event Action OnChickenDeath;                            
-
-        public short Score
-        {
-            get
-            {
-                return _score;
-            }
-        }                
+        public static event Action OnChickenDeath;                
 
         void Start()
         {
@@ -40,14 +30,9 @@ namespace ChickenVSZombies.Characters.Chicken
         public bool IsChickenDead()
         {
             return _life <= 0f;
-        }
+        }        
 
-        public void AddScore(short value)
-        {
-            _score += value;
-        }
-
-        public void ReceiveDamage(float amountOfDamage) //Function repeats in Zombie als
+        public void ReceiveDamage(float amountOfDamage) //Function repeats in Zombie also
         {
             _life -= amountOfDamage;
 
@@ -56,9 +41,7 @@ namespace ChickenVSZombies.Characters.Chicken
 
         private void ResetChicken()
         {
-            _life = _initialChickenLife;
-
-            _score = 0;
+            _life = _initialChickenLife;            
         }
 
         private void ChickenDied()

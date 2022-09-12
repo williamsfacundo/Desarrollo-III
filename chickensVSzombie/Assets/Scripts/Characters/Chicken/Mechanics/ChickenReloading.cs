@@ -7,7 +7,7 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
     //[RequireComponent(typeof(ChickenInventory))]
     public class ChickenReloading : MonoBehaviour
     {
-        private Chicken _chicken;
+        private ChickenHealth _chicken;
 
         private ChickenInventory _chickenInventory;
 
@@ -27,7 +27,7 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
 
         void Awake()
         {
-            _chicken = GetComponent<Chicken>();
+            _chicken = GetComponent<ChickenHealth>();
 
             _chickenInventory = GetComponent<ChickenInventory>();
         }
