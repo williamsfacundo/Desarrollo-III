@@ -13,7 +13,7 @@ namespace ChickenVSZombies.GameplayItems
         {
             ChickenHealth.OnChickenDeath += ResetGameplay;
 
-            EggBase.OnBaseDestroyed += ResetGameplay;
+            BaseHealth.OnBaseDestroyed += ResetGameplay;
 
             EndGameTimer.OnTimerEnds += ResetGameplay;
         }
@@ -22,7 +22,7 @@ namespace ChickenVSZombies.GameplayItems
         {
             ChickenHealth.OnChickenDeath -= ResetGameplay;
 
-            EggBase.OnBaseDestroyed -= ResetGameplay;
+            BaseHealth.OnBaseDestroyed -= ResetGameplay;
 
             EndGameTimer.OnTimerEnds -= ResetGameplay;
         }

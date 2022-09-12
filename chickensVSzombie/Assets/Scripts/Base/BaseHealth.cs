@@ -4,7 +4,7 @@ using ChickenVSZombies.GameplayItems;
 
 namespace ChickenVSZombies.Base 
 {
-    public class EggBase : MonoBehaviour 
+    public class BaseHealth : MonoBehaviour 
     {
         [SerializeField] private float _initialBaseLife;
 

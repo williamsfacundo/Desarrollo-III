@@ -13,7 +13,7 @@ namespace ChickenVSZombies.Characters.Zombies
 
         private ZombieMovement _zombieMovement;
 
-        private EggBase _base;
+        private BaseHealth _base;
 
         private float _zombieDamage;
 
@@ -28,7 +28,7 @@ namespace ChickenVSZombies.Characters.Zombies
 
         void Start()
         {
-            _base = _zombieMovement.Target.GetComponent<EggBase>();
+            _base = _zombieMovement.Target.GetComponent<BaseHealth>();
 
             _zombieDamage = _zombieInitialDamage;
 

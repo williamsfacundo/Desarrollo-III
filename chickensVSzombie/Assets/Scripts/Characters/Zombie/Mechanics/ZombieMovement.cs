@@ -29,7 +29,7 @@ namespace ChickenVSZombies.Characters.Zombies
 
         void Awake() //What happens if the target was not found?
         {            
-            _target = FindObjectOfType<EggBase>().gameObject;            
+            _target = FindObjectOfType<BaseHealth>().gameObject;            
         }
 
         private void Start()

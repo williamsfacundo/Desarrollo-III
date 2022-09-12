@@ -36,8 +36,7 @@ namespace ChickenVSZombies.Characters.Chicken
 
         private void ResetInventory() 
         {
-            _equippedWeapon = new Firearm(
-            new AmmoBag(true),
+            _equippedWeapon = new Firearm(new AmmoBag(true),
             new Canyon(_initialFirearmStats.FireRate, _initialFirearmStats.Damage, _initialFirearmStats.FireCapacity),
             new Magazine(_initialFirearmStats.MagazineSize, _initialFirearmStats.ReloadTime));
         }
