@@ -1,5 +1,6 @@
 using UnityEngine;
 using ChickenVSZombies.Characters.Chicken.Weapons.Firearms;
+using ChickenVSZombies.GameplayItems;
 
 namespace ChickenVSZombies.Characters.Chicken
 {
@@ -17,7 +18,22 @@ namespace ChickenVSZombies.Characters.Chicken
 
         void Start()
         {
+            ResetInventory();
+        }
+
+        private void OnEnable()
+        {
+            GameplayResetter.OnGameplayResset += ResetInventory;
+        }
+
+        private void OnDisable()
+        {
+            GameplayResetter.OnGameplayResset -= ResetInventory;
+        }
+
+        private void ResetInventory() 
+        {
             _equippedWeapon = new Rifle();
-        }        
+        }
     }
 }
