@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using ChickenVSZombies.Characters.Enums;
+using ChickenVSZombies.GameplayItems;
 
 namespace ChickenVSZombies.Characters.Chicken.Mechanics
 {
@@ -28,14 +29,7 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
 
         void Start()
         {
-            transform.position = _initialPosition.transform.position;
-
-            OnChickenMoved();
-
-            _chickenMoveDirection = Direction.NONE;
-
-            _horizontalInputDetection = 0;
-            _verticalInputDetection = 0;            
+            ResetMovement();
         }
 
         void Update()
@@ -46,6 +40,31 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
         void FixedUpdate()
         {
             InputResponse();
+        }
+
+        void OnEnable()
+        {
+            GameplayResetter.OnGameplayResset += ResetMovement;
+        }
+
+        void OnDisable()
+        {
+            GameplayResetter.OnGameplayResset -= ResetMovement;
+        }
+
+        private void ResetMovement() 
+        {
+            transform.position = _initialPosition.transform.position;
+
+            if (OnChickenMoved != null)
+            {
+                OnChickenMoved();
+            }
+
+            _chickenMoveDirection = Direction.NONE;
+
+            _horizontalInputDetection = 0;
+            _verticalInputDetection = 0;
         }
 
         private void InputDetection()
