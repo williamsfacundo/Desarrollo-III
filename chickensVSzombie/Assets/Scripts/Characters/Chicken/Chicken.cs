@@ -1,9 +1,10 @@
 using System;
 using UnityEngine;
+using ChickenVSZombies.GameplayItems;
 
 namespace ChickenVSZombies.Characters.Chicken
 {
-    public class Chicken : MonoBehaviour //Change for chickenHealth (fist separe what is health from what is score)
+    public class Chicken : MonoBehaviour //Change for chickenHealth (first separe what is health from what is score)
     {
         [SerializeField] private float _initialChickenLife;    
 
@@ -21,12 +22,20 @@ namespace ChickenVSZombies.Characters.Chicken
             }
         }                
 
-        private void Start()
+        void Start()
         {
-            _life = _initialChickenLife;
+            ResetChicken();                      
+        }
 
-            _score = 0;                      
-        }       
+        private void OnEnable()
+        {
+            GameplayResetter.OnGameplayResset += ResetChicken;
+        }
+
+        private void OnDisable()
+        {
+            GameplayResetter.OnGameplayResset -= ResetChicken;
+        }
 
         public bool IsChickenDead()
         {
@@ -38,6 +47,20 @@ namespace ChickenVSZombies.Characters.Chicken
             _score += value;
         }
 
+        public void ReceiveDamage(float amountOfDamage) //Function repeats in Zombie als
+        {
+            _life -= amountOfDamage;
+
+            ChickenDied();
+        }
+
+        private void ResetChicken()
+        {
+            _life = _initialChickenLife;
+
+            _score = 0;
+        }
+
         private void ChickenDied()
         {
             if (_life <= 0f)
@@ -47,13 +70,6 @@ namespace ChickenVSZombies.Characters.Chicken
                     OnChickenDeath();
                 }
             }
-        }
-
-        public void ReceiveDamage(float amountOfDamage) //Function repeats in Zombie als
-        { 
-            _life -= amountOfDamage;           
-
-            ChickenDied();
-        }        
+        }                
     }
 }
