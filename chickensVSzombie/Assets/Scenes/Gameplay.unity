@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 204081513928659324, guid: b3ea62f9c81094f49b8c044a9f5b0a56, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1122699008094972161, guid: b3ea62f9c81094f49b8c044a9f5b0a56, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -615,7 +619,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 683847189942253681, guid: 92845153fefe97d43817bdd5e7629c4e, type: 3}
       propertyPath: m_Name
-      value: Spawn Points
+      value: Zombies Spawn Points
       objectReference: {fileID: 0}
     - target: {fileID: 683847189942253682, guid: 92845153fefe97d43817bdd5e7629c4e, type: 3}
       propertyPath: m_RootOrder

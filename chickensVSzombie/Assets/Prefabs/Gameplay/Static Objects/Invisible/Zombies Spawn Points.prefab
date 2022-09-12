@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 683847189942253682}
   - component: {fileID: 683847189942253683}
   m_Layer: 0
-  m_Name: Spawn Points
+  m_Name: Zombies Spawn Points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -239,3 +239,4 @@ MonoBehaviour:
   - {fileID: 683847189296168683}
   _minSpawnTime: 1
   _maxSpawnTime: 4
+  _initialZombieMaxInstances: 30
