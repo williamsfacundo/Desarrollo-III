@@ -4,7 +4,7 @@ namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Bullets
 {
     public class Bullet : MonoBehaviour //Damage is harcoded, must be changed 
     {
-        [SerializeField] private float _bulletVelocity = 6f;
+        [SerializeField] private float _bulletVelocity;
 
         private float _bulletDamage;
 
@@ -22,12 +22,12 @@ namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Bullets
             }
         }
 
-        public Vector2 BulletMoveDirection 
+        public Vector3 BulletMoveDirection 
         {
             set 
             {
                 _bulletMoveDirection = value;
-            }
+            }            
         }
 
         void Start()
@@ -46,7 +46,7 @@ namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Bullets
         }
 
         private void MoveBullet() 
-        {
+        {            
             transform.position += _bulletMoveDirection * _bulletVelocity * Time.deltaTime;            
         }
     }

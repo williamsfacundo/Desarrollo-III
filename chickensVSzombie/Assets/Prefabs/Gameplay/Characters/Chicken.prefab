@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initialPosition: {fileID: 0}
-  _chickenMoveVelocity: 2.2
+  _chickenMoveVelocity: 0.8
 --- !u!114 &-8290856188589662859
 MonoBehaviour:
   m_ObjectHideFlags: 0
