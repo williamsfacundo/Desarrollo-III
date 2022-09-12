@@ -1,4 +1,5 @@
 using UnityEngine;
+using ChickenVSZombies.GameplayItems;
 
 namespace ChickenVSZombies.Characters.Chicken.Mechanics
 {
@@ -31,11 +32,9 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
             _chickenInventory = GetComponent<ChickenInventory>();
         }
 
-        private void Start()
+        void Start()
         {
-            _reloadingTimer = 0;
-
-            _watingToReload = false;
+            ResetChickenReloading();
         }
 
         void Update()
@@ -50,7 +49,24 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
             {
                 StartReloadingMechanic();
             }
-        }        
+        }
+
+        private void OnEnable()
+        {
+            GameplayResetter.OnGameplayResset += ResetChickenReloading;
+        }
+
+        private void OnDisable()
+        {
+            GameplayResetter.OnGameplayResset -= ResetChickenReloading;
+        }
+
+        private void ResetChickenReloading() 
+        {
+            _reloadingTimer = 0;
+
+            _watingToReload = false;
+        }
 
         private void StartReloadingMechanic()
         {
