@@ -3,7 +3,7 @@ using ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Bullets;
 
 namespace ChickenVSZombies.Characters.Zombies 
 {
-    public class Zombie : MonoBehaviour //Change for Zombie Health
+    public class ZombieHealth : MonoBehaviour
     {
         [SerializeField] private float _initialZombieLife;
         
