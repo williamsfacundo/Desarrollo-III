@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using ChickenVSZombies.GameplayItems;
 
 namespace ChickenVSZombies.Base 
 {
@@ -21,7 +22,17 @@ namespace ChickenVSZombies.Base
         
         void Start()
         {
-            _baseLife = _initialBaseLife; 
+            ResetEggBase(); 
+        }
+
+        void OnEnable()
+        {
+            GameplayResetter.OnGameplayResset += ResetEggBase;
+        }
+
+        void OnDisable()
+        {
+            GameplayResetter.OnGameplayResset -= ResetEggBase;
         }
 
         public void ReceiveDamage(float damage) 
@@ -35,6 +46,11 @@ namespace ChickenVSZombies.Base
                     OnBaseDestroyed();
                 }               
             }
+        }
+
+        private void ResetEggBase() 
+        {
+            _baseLife = _initialBaseLife;
         }
     }
 }
