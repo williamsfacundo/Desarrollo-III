@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ChickenVSZombies.GameplayItems
+namespace ChickenVSZombies.GameplayItems //Move to gameplay Items or include the script into bullet folder
 {
     public class BulletDestroyer : MonoBehaviour
     {

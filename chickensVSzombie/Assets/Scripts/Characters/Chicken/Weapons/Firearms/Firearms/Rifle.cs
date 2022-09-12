@@ -1,6 +1,7 @@
 using UnityEngine;
 using ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Stats;
 using ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Parts;
+using ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Bullets;
 
 namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms
 {

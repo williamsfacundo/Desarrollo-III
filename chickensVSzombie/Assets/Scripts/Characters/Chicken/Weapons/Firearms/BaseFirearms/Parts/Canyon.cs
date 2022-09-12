@@ -8,6 +8,14 @@ namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Parts
 
         private short _fireCapacity; //Amount of bullets that are shot in a single round
 
+        public float FireRate 
+        {
+            get 
+            {
+                return _fireRate;
+            }
+        }
+
         public float Damage 
         {
             get 

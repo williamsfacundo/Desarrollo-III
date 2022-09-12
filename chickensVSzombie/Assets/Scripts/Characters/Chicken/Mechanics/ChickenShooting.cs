@@ -1,4 +1,6 @@
 using UnityEngine;
+using ChickenVSZombies.GameplayItems;
+using ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Bullets;
 
 namespace ChickenVSZombies.Characters.Chicken.Mechanics
 {
@@ -15,6 +17,8 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
 
         private const int ShootingActionMouseButton = 0;
 
+        private float _fireRateTimer;
+
         void Awake()
         {
             _chicken = GetComponent<ChickenHealth>();
@@ -24,20 +28,70 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
             _chickenInventory = GetComponent<ChickenInventory>();
         }
 
-        void Update()
+        private void Start()
         {
-            Shooting();
+            _fireRateTimer = 0f;
         }
 
-        private void Shooting() //Fire rate mechanic not implemented
+        void Update()
         {
-            if (Input.GetMouseButtonDown(ShootingActionMouseButton))
+            DecreaseFireRateTimer();
+
+            Shooting();            
+        }
+
+        void OnEnable()
+        {
+            GameplayResetter.OnGameplayResset += ResetChickenShooting;            
+        }
+
+        void OnDisable()
+        {
+            GameplayResetter.OnGameplayResset -= ResetChickenShooting;
+        }
+
+        private void ResetChickenShooting() 
+        {
+            _fireRateTimer = 0f;
+
+            DestroyBulletsInScene();
+        }
+        
+        private void DestroyBulletsInScene() 
+        {
+            Bullet[] bullets = FindObjectsOfType<Bullet>();
+
+            for (short i = 0; i < bullets.Length; i++)
+            {
+                bullets[i].DestroyBullet();
+            }
+        }
+
+        private void Shooting()
+        {
+            if (Input.GetMouseButton(ShootingActionMouseButton))
             {
                 if (!_chicken.IsChickenDead() && !_chickenReloading.WatingToReload 
-                    && !_chickenInventory.EquippedWeapon.Magazine.MagazineEmpty())
+                    && !_chickenInventory.EquippedWeapon.Magazine.MagazineEmpty() &&
+                    _fireRateTimer == 0f)
                 {                    
                     _chickenInventory.EquippedWeapon.FireWeapon(gameObject.transform.position);
+
+                    _fireRateTimer = _chickenInventory.EquippedWeapon.Canyon.FireRate;
                 }               
+            }
+        }
+
+        private void DecreaseFireRateTimer() 
+        {
+            if (_fireRateTimer > 0f) 
+            {
+                _fireRateTimer -= Time.deltaTime;
+
+                if (_fireRateTimer < 0f) 
+                {
+                    _fireRateTimer = 0f;
+                }
             }
         }
     }

@@ -2,13 +2,13 @@ using UnityEngine;
 
 namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Bullets 
 {
-    public class Bullet : MonoBehaviour //Change bullet for bullet movement
+    public class Bullet : MonoBehaviour //Damage is harcoded, must be changed 
     {
         [SerializeField] private float _bulletVelocity = 6f;
 
         private float _bulletDamage;
 
-        private Vector3 _bulletMoveDirection = Vector2.zero;
+        private Vector3 _bulletMoveDirection = Vector2.zero;        
 
         public float BulletDamage 
         {
@@ -38,7 +38,12 @@ namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Bullets
         void Update()
         {
             MoveBullet();
-        }       
+        }        
+
+        public void DestroyBullet() 
+        {
+            Destroy(gameObject);
+        }
 
         private void MoveBullet() 
         {
