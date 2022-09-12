@@ -6,7 +6,7 @@ namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Bullets
     {
         [SerializeField] private float _bulletVelocity;
 
-        private float _bulletDamage;
+        private float _bulletDamagee;        
 
         private Vector3 _bulletMoveDirection = Vector2.zero;        
 
@@ -14,11 +14,11 @@ namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Bullets
         {
             set 
             {
-                _bulletDamage = value;
+                _bulletDamagee = value;
             }
             get 
             {
-                return _bulletDamage;
+                return _bulletDamagee;
             }
         }
 
@@ -28,13 +28,8 @@ namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Bullets
             {
                 _bulletMoveDirection = value;
             }            
-        }
+        }        
 
-        void Start()
-        {
-            _bulletDamage = 10;
-        }
-        
         void Update()
         {
             MoveBullet();

@@ -6,7 +6,7 @@ namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Stats
 
         public const float FireRate = 0.6f;
 
-        public const float Damage = 5.5f;
+        public const float Damage = 10f;
 
         public const short FireCapacity = 1;
 
