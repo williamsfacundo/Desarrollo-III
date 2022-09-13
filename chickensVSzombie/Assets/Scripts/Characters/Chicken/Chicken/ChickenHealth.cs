@@ -9,9 +9,19 @@ namespace ChickenVSZombies.Characters.Chicken
     {
         [SerializeField] private float _initialChickenLife;    
 
-        private float _life;                
+        public static event Action OnChickenDeath;
 
-        public static event Action OnChickenDeath;                
+        public static event Action OnHealthChanged;
+
+        private float _life;
+
+        public float Life 
+        {
+            get 
+            {
+                return _life;
+            }
+        }
 
         void Start()
         {
@@ -37,6 +47,11 @@ namespace ChickenVSZombies.Characters.Chicken
         {
             _life -= damage;
 
+            if (OnHealthChanged != null)
+            {
+                OnHealthChanged();
+            }
+
             LifeReachedZero();
         }
 
@@ -53,7 +68,12 @@ namespace ChickenVSZombies.Characters.Chicken
 
         private void ResetChicken()
         {
-            _life = _initialChickenLife;            
+            _life = _initialChickenLife;
+
+            if (OnHealthChanged != null) 
+            {
+                OnHealthChanged();
+            }
         }        
     }
 }

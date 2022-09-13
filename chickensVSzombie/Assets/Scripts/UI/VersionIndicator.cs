@@ -1,12 +1,15 @@
 using UnityEngine;
 using TMPro;
 
-public class VersionIndicator : MonoBehaviour
+namespace ChickenVSZombies.UI 
 {
-    [SerializeField] private TMP_Text _showVersionText;
-        
-    void Awake()
+    public class VersionIndicator : MonoBehaviour
     {
-        _showVersionText.text = "Version v" + Application.version;
+        [SerializeField] private TMP_Text _showVersionText;
+
+        void Awake()
+        {
+            _showVersionText.text = "Version v" + Application.version;
+        }
     }
 }

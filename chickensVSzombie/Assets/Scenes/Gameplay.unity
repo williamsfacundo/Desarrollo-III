@@ -518,6 +518,7 @@ GameObject:
   m_Component:
   - component: {fileID: 627786548}
   - component: {fileID: 627786547}
+  - component: {fileID: 627786549}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -552,6 +553,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &627786549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627786546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49abab10df6825e4fbda565f6aad664a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showChickenHealthText: {fileID: 685835842}
 --- !u!4 &630277924 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5524826271297196982, guid: 51e91d9296b48ed439a94972f2d93b31, type: 3}
@@ -658,7 +672,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 80}
+  m_SizeDelta: {x: 450, y: 80}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &685835842
 MonoBehaviour:
