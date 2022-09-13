@@ -26,11 +26,16 @@ namespace ChickenVSZombies.Characters.Zombies
 
         public void ReceiveDamage(float damage) 
         {
-            _life -= damage;            
+            _life -= damage;
 
-            if (_life <= 0) 
+            LifeReachedZero();
+        }
+
+        public void LifeReachedZero()
+        {
+            if (_life <= 0)
             {
-                Destroy(gameObject);                
+                DestroyZombie();
             }
         }
 
@@ -49,11 +54,6 @@ namespace ChickenVSZombies.Characters.Zombies
 
                 Destroy(collision.gameObject);
             }
-        }
-
-        private void Death()
-        {
-
-        }
+        }        
     }
 }

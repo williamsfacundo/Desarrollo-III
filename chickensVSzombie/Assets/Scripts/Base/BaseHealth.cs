@@ -38,25 +38,25 @@ namespace ChickenVSZombies.Base
 
         public void ReceiveDamage(float damage) 
         {
-            _baseLife -= damage;            
+            _baseLife -= damage;
 
-            if (_baseLife <= 0) 
+            LifeReachedZero();
+        }
+
+        public void LifeReachedZero()
+        {
+            if (_baseLife <= 0)
             {
-                if (OnBaseDestroyed != null) 
+                if (OnBaseDestroyed != null)
                 {
                     OnBaseDestroyed();
-                }               
+                }
             }
         }
 
         private void ResetEggBase() 
         {
             _baseLife = _initialBaseLife;
-        }
-
-        private void Death()
-        {
-
-        }
+        }        
     }
 }

@@ -37,28 +37,23 @@ namespace ChickenVSZombies.Characters.Chicken
         {
             _life -= damage;
 
-            ChickenDied();
+            LifeReachedZero();
         }
 
-        private void ResetChicken()
-        {
-            _life = _initialChickenLife;            
-        }
-
-        private void ChickenDied()
+        public void LifeReachedZero()
         {
             if (_life <= 0f)
             {
                 if (OnChickenDeath != null)
-                {                    
+                {
                     OnChickenDeath();
                 }
             }
         }
 
-        private void Death() 
+        private void ResetChicken()
         {
-
-        }
+            _life = _initialChickenLife;            
+        }        
     }
 }

@@ -4,6 +4,6 @@ namespace ChickenVSZombies.Interfaces
     {
         public void ReceiveDamage(float damage);
 
-        public void Death();
+        public void LifeReachedZero();
     }
 }
