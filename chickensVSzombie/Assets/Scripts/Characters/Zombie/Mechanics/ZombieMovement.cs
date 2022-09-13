@@ -37,7 +37,7 @@ namespace ChickenVSZombies.Characters.Zombies
             _isZombieCollidingWithTarget = false;
         }
 
-        void Update()
+        void FixedUpdate()
         {
             MoveTowardsTheTarget();            
         }
