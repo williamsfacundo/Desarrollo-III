@@ -1447,23 +1447,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475505760}
   m_CullTransparentMesh: 1
---- !u!1 &1483320845 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 829502133172507525, guid: 1a8227b12f608764382b51eaf260dcf0, type: 3}
-  m_PrefabInstance: {fileID: 829502134059944275}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1483320846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1483320845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 111e0c86efe9ae743a5fb2528479bb9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1713673902
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1541,30 +1524,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 683847188733829528, guid: 92845153fefe97d43817bdd5e7629c4e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 683847188850378103, guid: 92845153fefe97d43817bdd5e7629c4e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 683847189110596574, guid: 92845153fefe97d43817bdd5e7629c4e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 683847189296168596, guid: 92845153fefe97d43817bdd5e7629c4e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 683847189470028652, guid: 92845153fefe97d43817bdd5e7629c4e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 683847189517529786, guid: 92845153fefe97d43817bdd5e7629c4e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 683847189942253681, guid: 92845153fefe97d43817bdd5e7629c4e, type: 3}
       propertyPath: m_Name
       value: Zombies Spawn Points
