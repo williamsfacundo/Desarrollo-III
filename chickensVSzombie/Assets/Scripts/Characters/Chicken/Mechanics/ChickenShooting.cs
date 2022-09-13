@@ -39,9 +39,7 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
 
         private void Start()
         {
-            _fireRateTimer = 0f;
-
-            Magazine.CallOnMagazineChanged();
+            _fireRateTimer = 0f;            
         }
 
         void Update()

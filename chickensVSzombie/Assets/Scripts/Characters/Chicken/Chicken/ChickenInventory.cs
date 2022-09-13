@@ -39,6 +39,8 @@ namespace ChickenVSZombies.Characters.Chicken
             _equippedWeapon = new Firearm(new AmmoBag(true),
             new Canyon(_initialFirearmStats.FireRate, _initialFirearmStats.Damage, _initialFirearmStats.FireCapacity),
             new Magazine(_initialFirearmStats.MagazineSize, _initialFirearmStats.ReloadTime));
+
+            Magazine.CallOnMagazineChanged();
         }
     }
 }
