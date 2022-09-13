@@ -30,7 +30,7 @@ namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Bullets
             }            
         }        
 
-        void Update()
+        void FixedUpdate()
         {
             MoveBullet();
         }        
