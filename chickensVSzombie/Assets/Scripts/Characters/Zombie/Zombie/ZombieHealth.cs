@@ -49,6 +49,11 @@ namespace ChickenVSZombies.Characters.Zombies
 
                 Destroy(collision.gameObject);
             }
-        }        
+        }
+
+        private void Death()
+        {
+
+        }
     }
 }

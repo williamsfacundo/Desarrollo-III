@@ -53,5 +53,10 @@ namespace ChickenVSZombies.Base
         {
             _baseLife = _initialBaseLife;
         }
+
+        private void Death()
+        {
+
+        }
     }
 }

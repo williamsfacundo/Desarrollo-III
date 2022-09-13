@@ -54,6 +54,11 @@ namespace ChickenVSZombies.Characters.Chicken
                     OnChickenDeath();
                 }
             }
-        }                
+        }
+
+        private void Death() 
+        {
+
+        }
     }
 }
