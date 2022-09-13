@@ -1,7 +1,7 @@
-using System;
 using UnityEngine;
 using ChickenVSZombies.GameplayItems;
 using ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Bullets;
+using ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Parts;
 
 namespace ChickenVSZombies.Characters.Chicken.Mechanics
 {
@@ -10,8 +10,6 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
     //[RequireComponent(typeof(ChickenInventory))]
     public class ChickenShooting : MonoBehaviour
     {
-        public static event Action OnWeaponShot;
-
         private ChickenHealth _chicken;
 
         private ChickenReloading _chickenReloading;
@@ -43,7 +41,7 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
         {
             _fireRateTimer = 0f;
 
-            OnWeaponShot();
+            Magazine.CallOnMagazineChanged();
         }
 
         void Update()
@@ -65,9 +63,7 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
 
         private void ResetChickenShooting() 
         {
-            _fireRateTimer = 0f;
-
-            OnWeaponShot();
+            _fireRateTimer = 0f;           
 
             DestroyBulletsInScene();
         }
@@ -92,12 +88,7 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
                 {                    
                     _chickenInventory.EquippedWeapon.FireWeapon(gameObject.transform.position);
 
-                    _fireRateTimer = _chickenInventory.EquippedWeapon.Canyon.FireRate;
-
-                    if (OnWeaponShot != null) 
-                    {
-                        OnWeaponShot();
-                    }
+                    _fireRateTimer = _chickenInventory.EquippedWeapon.Canyon.FireRate;                   
                 }               
             }
         }

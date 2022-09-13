@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using ChickenVSZombies.Characters.Chicken.Mechanics;
+using ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Parts;
 
 namespace ChickenVSZombies.UI 
 {
@@ -17,16 +18,16 @@ namespace ChickenVSZombies.UI
 
         private void OnEnable()
         {
-            ChickenShooting.OnWeaponShot += UpdateBulletsLeftText;
+            Magazine.OnMagazineChanged += UpdateBulletsLeftText;            
         }
 
         private void OnDisable()
         {
-            ChickenShooting.OnWeaponShot += UpdateBulletsLeftText;
+            Magazine.OnMagazineChanged += UpdateBulletsLeftText;            
         }
 
         private void UpdateBulletsLeftText()
-        {
+        {            
             _showBulletsLeftText.text = "Bullets Left: " + _chickenShooting.ChickenInventory.EquippedWeapon.Magazine.BulletsInMagazine;
         }
     }

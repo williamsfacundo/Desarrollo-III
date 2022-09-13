@@ -1,7 +1,11 @@
+using System;
+
 namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Parts
 {
     public class Magazine
     {
+        public static event Action OnMagazineChanged;
+
         private short _bulletsInMagazine;
 
         private short _magazineCapacity;
@@ -13,6 +17,11 @@ namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Parts
             set 
             {
                 _bulletsInMagazine = value;
+
+                if (OnMagazineChanged != null)
+                {
+                    OnMagazineChanged();
+                }
             }
             get
             {
@@ -50,8 +59,16 @@ namespace ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Parts
 
             _magazineCapacity = magazineSize;
 
-            _reloadTime = reloadTime;            
-        }        
+            _reloadTime = reloadTime;           
+        } 
+        
+        public static void CallOnMagazineChanged() 
+        {
+            if (OnMagazineChanged != null)
+            {
+                OnMagazineChanged();
+            }
+        }
 
         public bool MagazineEmpty()
         {
