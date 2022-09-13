@@ -1,10 +1,11 @@
 using System;
 using UnityEngine;
 using ChickenVSZombies.GameplayItems;
+using ChickenVSZombies.Interfaces;
 
 namespace ChickenVSZombies.Characters.Chicken
 {
-    public class ChickenHealth : MonoBehaviour
+    public class ChickenHealth : MonoBehaviour, IDamageable
     {
         [SerializeField] private float _initialChickenLife;    
 
@@ -32,9 +33,9 @@ namespace ChickenVSZombies.Characters.Chicken
             return _life <= 0f;
         }        
 
-        public void ReceiveDamage(float amountOfDamage) //Function repeats in Zombie also
+        public void ReceiveDamage(float damage)
         {
-            _life -= amountOfDamage;
+            _life -= damage;
 
             ChickenDied();
         }
