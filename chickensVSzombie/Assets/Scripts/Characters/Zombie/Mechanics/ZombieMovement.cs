@@ -3,11 +3,14 @@ using ChickenVSZombies.Base;
 
 namespace ChickenVSZombies.Characters.Zombies 
 {
+    [RequireComponent(typeof(Rigidbody2D))]
     public class ZombieMovement : MonoBehaviour
     {
         [SerializeField] private float _zombieMoveVelocity;
 
         private GameObject _target;
+
+        private Rigidbody2D _rb2D;
 
         private bool _isZombieCollidingWithTarget;
 
@@ -29,7 +32,9 @@ namespace ChickenVSZombies.Characters.Zombies
 
         void Awake() //What happens if the target was not found?
         {            
-            _target = FindObjectOfType<BaseHealth>().gameObject;            
+            _target = FindObjectOfType<BaseHealth>().gameObject;
+
+            _rb2D = GetComponent<Rigidbody2D>();
         }
 
         private void Start()
@@ -62,7 +67,8 @@ namespace ChickenVSZombies.Characters.Zombies
         {
             if (!_isZombieCollidingWithTarget) 
             {
-                gameObject.transform.position += CalculateDirectionToMoveTowardsTheTarget() * Time.deltaTime * _zombieMoveVelocity;
+                _rb2D.MovePosition(gameObject.transform.position + 
+                    CalculateDirectionToMoveTowardsTheTarget() * Time.deltaTime * _zombieMoveVelocity);                
             }            
         }
 
