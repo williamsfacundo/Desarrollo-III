@@ -11,6 +11,14 @@ namespace ChickenVSZombies.GameplayItems
 
         private float _endGameTimer; //In order not to repeat so many times timer creat a class timer
 
+        public float Timer 
+        {
+            get 
+            {
+                return _endGameTimer;
+            }
+        }
+
         void Start()
         {
             _gameplayDuration = 60f;

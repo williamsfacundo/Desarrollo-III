@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 5959930764704928935}
   - component: {fileID: 5959930764704928929}
   - component: {fileID: -1349685966656537919}
+  - component: {fileID: 627786551}
+  - component: {fileID: 627786547}
   m_Layer: 0
   m_Name: UI Manager
   m_TagString: Untagged
@@ -72,3 +74,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _showBaseHealthText: {fileID: 0}
+--- !u!114 &627786551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5959930764704928934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bddef9edd77044240b6d4b327f4cc469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showBulletsLeftText: {fileID: 0}
+--- !u!114 &627786547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5959930764704928934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 796fd3a64aa1c6f4bb3175c888bc00b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showEndGameTimerText: {fileID: 0}
