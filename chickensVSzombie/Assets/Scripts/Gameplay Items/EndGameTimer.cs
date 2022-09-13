@@ -4,10 +4,10 @@ using UnityEngine;
 namespace ChickenVSZombies.GameplayItems 
 {
     public class EndGameTimer : MonoBehaviour
-    {
-        public static event Action OnTimerEnds; 
-
-        private float _gameplayDuration;
+    {        
+        [SerializeField] private float _gameplayDuration;
+        
+        public static event Action OnTimerEnds;
 
         private float _endGameTimer; //In order not to repeat so many times timer creat a class timer
 
@@ -21,8 +21,6 @@ namespace ChickenVSZombies.GameplayItems
 
         void Start()
         {
-            _gameplayDuration = 60f;
-
             ResetTimer();
         }
 
