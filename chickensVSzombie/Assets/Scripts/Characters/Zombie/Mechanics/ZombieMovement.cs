@@ -40,6 +40,8 @@ namespace ChickenVSZombies.Characters.Zombies
         private void Start()
         {
             _isZombieCollidingWithTarget = false;
+
+            _rb2D.velocity = Vector2.zero;
         }
 
         void FixedUpdate()

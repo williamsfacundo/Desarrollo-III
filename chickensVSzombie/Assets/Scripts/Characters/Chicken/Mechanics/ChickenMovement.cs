@@ -36,12 +36,12 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
 
         void Start()
         {
-            ResetMovement();
+            ResetMovement();            
         }
 
         void Update()
         {
-            InputDetection();
+            InputDetection();            
         }
 
         void FixedUpdate()
@@ -63,6 +63,8 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
 
         private void ResetMovement() 
         {
+            _rb2D.velocity = Vector2.zero;
+
             transform.position = _initialPosition.transform.position;
 
             if (OnChickenMoved != null)
