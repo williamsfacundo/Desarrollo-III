@@ -11,6 +11,8 @@ namespace ChickenVSZombies.Base
 
         public static event Action OnBaseDestroyed;
 
+        public static event Action OnBaseHealthChanged;
+
         private float _baseLife;        
 
         public float BaseLife 
@@ -40,6 +42,11 @@ namespace ChickenVSZombies.Base
         {
             _baseLife -= damage;
 
+            if (OnBaseHealthChanged != null)
+            {
+                OnBaseHealthChanged();
+            }
+
             LifeReachedZero();
         }
 
@@ -57,6 +64,11 @@ namespace ChickenVSZombies.Base
         private void ResetEggBase() 
         {
             _baseLife = _initialBaseLife;
+
+            if (OnBaseHealthChanged != null) 
+            {
+                OnBaseHealthChanged();
+            }
         }        
     }
 }
