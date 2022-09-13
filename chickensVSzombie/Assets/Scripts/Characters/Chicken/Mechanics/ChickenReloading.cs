@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using ChickenVSZombies.GameplayItems;
 
@@ -7,6 +8,10 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
     //[RequireComponent(typeof(ChickenInventory))]
     public class ChickenReloading : MonoBehaviour
     {
+        public static event Action OnChickenStartReloading;
+
+        public static event Action OnChickenFinishedReloading;
+
         private ChickenHealth _chicken;
 
         private ChickenInventory _chickenInventory;
@@ -69,6 +74,11 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
                 _reloadingTimer = _chickenInventory.EquippedWeapon.Magazine.ReloadTime;
 
                 _watingToReload = true;
+
+                if (OnChickenStartReloading != null) 
+                {
+                    OnChickenStartReloading();
+                }
             }
             
         }
@@ -86,6 +96,11 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
             _reloadingTimer = 0;
 
             _watingToReload = false;
+
+            if (OnChickenFinishedReloading != null) 
+            {            
+                OnChickenFinishedReloading();
+            }
         }
 
         private void DecreasReloadingTimer()
@@ -108,6 +123,11 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
                 _chickenInventory.EquippedWeapon.ReloadWeapon();
 
                 _watingToReload = false;
+
+                if (OnChickenFinishedReloading != null)
+                {
+                    OnChickenFinishedReloading();
+                }
             }           
         }        
     }

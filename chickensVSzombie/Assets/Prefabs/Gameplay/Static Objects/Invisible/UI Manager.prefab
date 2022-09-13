@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -1349685966656537919}
   - component: {fileID: 627786551}
   - component: {fileID: 627786547}
+  - component: {fileID: 460398708437888920}
   m_Layer: 0
   m_Name: UI Manager
   m_TagString: Untagged
@@ -100,3 +101,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _showEndGameTimerText: {fileID: 0}
+--- !u!114 &460398708437888920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5959930764704928934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40161f764f91cc44b892421c47620076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _reloadingText: {fileID: 0}
