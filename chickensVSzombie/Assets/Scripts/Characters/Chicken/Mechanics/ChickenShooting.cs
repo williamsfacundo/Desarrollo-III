@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using ChickenVSZombies.GameplayItems;
 using ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Bullets;
@@ -9,6 +10,8 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
     //[RequireComponent(typeof(ChickenInventory))]
     public class ChickenShooting : MonoBehaviour
     {
+        public static event Action OnWeaponShot;
+
         private ChickenHealth _chicken;
 
         private ChickenReloading _chickenReloading;
@@ -19,18 +22,28 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
 
         private float _fireRateTimer;
 
+        public ChickenInventory ChickenInventory 
+        {
+            get 
+            {
+                return _chickenInventory;
+            }
+        }
+
         void Awake()
         {
             _chicken = GetComponent<ChickenHealth>();
 
             _chickenReloading = GetComponent<ChickenReloading>();
 
-            _chickenInventory = GetComponent<ChickenInventory>();
+            _chickenInventory = GetComponent<ChickenInventory>();            
         }
 
         private void Start()
         {
             _fireRateTimer = 0f;
+
+            OnWeaponShot();
         }
 
         void Update()
@@ -53,6 +66,8 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
         private void ResetChickenShooting() 
         {
             _fireRateTimer = 0f;
+
+            OnWeaponShot();
 
             DestroyBulletsInScene();
         }
@@ -78,6 +93,11 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
                     _chickenInventory.EquippedWeapon.FireWeapon(gameObject.transform.position);
 
                     _fireRateTimer = _chickenInventory.EquippedWeapon.Canyon.FireRate;
+
+                    if (OnWeaponShot != null) 
+                    {
+                        OnWeaponShot();
+                    }
                 }               
             }
         }
