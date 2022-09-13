@@ -23,12 +23,22 @@ namespace ChickenVSZombies.GameplayItems
         {
             _gameplayDuration = 60f;
 
-            _endGameTimer = _gameplayDuration;
+            ResetTimer();
         }
 
         void Update()
         {
             EndGame();
+        }
+
+        void OnEnable()
+        {
+            GameplayResetter.OnGameplayResset += ResetTimer;
+        }
+
+        void OnDisable()
+        {
+            GameplayResetter.OnGameplayResset -= ResetTimer;
         }
 
         private void EndGame()
@@ -42,6 +52,11 @@ namespace ChickenVSZombies.GameplayItems
                     OnTimerEnds(); 
                 }               
             }
+        }
+
+        private void ResetTimer() 
+        {
+            _endGameTimer = _gameplayDuration;
         }
     }
 }
