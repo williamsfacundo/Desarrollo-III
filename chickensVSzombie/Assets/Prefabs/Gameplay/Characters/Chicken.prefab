@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2832a200ee988fb478b91ee2b9680041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pointsForZombieKilled: 100
 --- !u!114 &6125467892630695068
 MonoBehaviour:
   m_ObjectHideFlags: 0

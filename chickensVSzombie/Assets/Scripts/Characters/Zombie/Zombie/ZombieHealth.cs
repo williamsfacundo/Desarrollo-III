@@ -7,7 +7,13 @@ namespace ChickenVSZombies.Characters.Zombies
     public class ZombieHealth : MonoBehaviour, IDamageable
     {
         [SerializeField] private float _initialZombieLife;
+
+        [SerializeField] private short _pointsGivenWhenKilled;
+
+        public delegate void ZombieAction(short value);
         
+        public static ZombieAction OnZombieDeath; 
+
         public static int ZombiesInstances = 0;
 
         private float _life;        
@@ -22,6 +28,23 @@ namespace ChickenVSZombies.Characters.Zombies
         private void OnDestroy()
         {            
             ZombiesInstances--;
+
+            if (OnZombieDeath != null) 
+            {
+                OnZombieDeath(100);
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.transform.tag == "Bullet")
+            {
+                Bullet bullet = collision.gameObject.GetComponent<Bullet>();
+
+                ReceiveDamage(bullet.BulletDamage);
+
+                Destroy(collision.gameObject);
+            }
         }
 
         public void ReceiveDamage(float damage) 
@@ -42,18 +65,6 @@ namespace ChickenVSZombies.Characters.Zombies
         public void DestroyZombie() 
         {
             Destroy(gameObject);
-        }
-
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            if (collision.transform.tag == "Bullet")
-            {
-                Bullet bullet = collision.gameObject.GetComponent<Bullet>();                
-
-                ReceiveDamage(bullet.BulletDamage);
-
-                Destroy(collision.gameObject);
-            }
-        }        
+        }                
     }
 }

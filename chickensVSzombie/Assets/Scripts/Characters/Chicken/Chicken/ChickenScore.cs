@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using ChickenVSZombies.GameplayItems;
+using ChickenVSZombies.Characters.Zombies;
 
 namespace ChickenVSZombies.Characters.Chicken 
 {
@@ -26,14 +27,18 @@ namespace ChickenVSZombies.Characters.Chicken
         private void OnEnable()
         {
             GameplayResetter.OnGameplayResset += ResetScore;
+
+            ZombieHealth.OnZombieDeath += AddScore;
         }
 
         private void OnDisable()
         {
             GameplayResetter.OnGameplayResset -= ResetScore;
+
+            ZombieHealth.OnZombieDeath -= AddScore;
         }
 
-        public void AddScore(short value)
+        private void AddScore(short value)
         {
             _score += value;
 
