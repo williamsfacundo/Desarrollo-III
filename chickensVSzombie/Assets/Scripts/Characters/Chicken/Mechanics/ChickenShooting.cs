@@ -81,12 +81,18 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
             if (Input.GetMouseButton(ShootingActionMouseButton))
             {
                 if (!_chicken.IsChickenDead() && !_chickenReloading.WatingToReload 
-                    && !_chickenInventory.EquippedWeapon.Magazine.MagazineEmpty() &&
-                    _fireRateTimer == 0f)
-                {                    
-                    _chickenInventory.EquippedWeapon.FireWeapon(gameObject.transform.position);
+                    && _fireRateTimer == 0f)
+                {
+                    if (!_chickenInventory.EquippedWeapon.Magazine.MagazineEmpty()) 
+                    {
+                        _chickenInventory.EquippedWeapon.FireWeapon(gameObject.transform.position);
 
-                    _fireRateTimer = _chickenInventory.EquippedWeapon.Canyon.FireRate;                   
+                        _fireRateTimer = _chickenInventory.EquippedWeapon.Canyon.FireRate;
+                    }
+                    else 
+                    {
+                        _chickenReloading.StartReloadingMechanic();
+                    }                                       
                 }               
             }
         }

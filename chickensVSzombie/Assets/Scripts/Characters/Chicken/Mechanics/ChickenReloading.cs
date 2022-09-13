@@ -47,7 +47,7 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
             }
             else 
             {
-                StartReloadingMechanic();
+                ReloadingInput();
             }
         }
 
@@ -59,27 +59,33 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
         private void OnDisable()
         {
             GameplayResetter.OnGameplayResset -= ResetChickenReloading;
+        }        
+
+        public void StartReloadingMechanic()
+        {
+            if (!_chicken.IsChickenDead() && _chickenInventory.EquippedWeapon.Magazine.IsMagazineAbleToBeReloaded()
+                    && _chickenInventory.EquippedWeapon.AmmoBag.IsThereAnyAmmoLeft())
+            {
+                _reloadingTimer = _chickenInventory.EquippedWeapon.Magazine.ReloadTime;
+
+                _watingToReload = true;
+            }
+            
         }
 
-        private void ResetChickenReloading() 
+        private void ReloadingInput() 
+        {
+            if (Input.GetKeyDown(ReloadButton))
+            {
+                StartReloadingMechanic();
+            }
+        }
+
+        private void ResetChickenReloading()
         {
             _reloadingTimer = 0;
 
             _watingToReload = false;
-        }
-
-        private void StartReloadingMechanic()
-        {
-            if (Input.GetKeyDown(ReloadButton))
-            {
-                if (!_chicken.IsChickenDead() && _chickenInventory.EquippedWeapon.Magazine.IsMagazineAbleToBeReloaded() 
-                    && _chickenInventory.EquippedWeapon.AmmoBag.IsThereAnyAmmoLeft())
-                {
-                    _reloadingTimer = _chickenInventory.EquippedWeapon.Magazine.ReloadTime;
-
-                    _watingToReload = true;
-                }
-            }
         }
 
         private void DecreasReloadingTimer()
