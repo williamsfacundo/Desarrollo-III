@@ -1,10 +1,11 @@
 using System;
 using UnityEngine;
 using ChickenVSZombies.GameplayItems;
+using ChickenVSZombies.Interfaces;
 
 namespace ChickenVSZombies.Base 
 {
-    public class BaseHealth : MonoBehaviour 
+    public class BaseHealth : MonoBehaviour, IDamageable 
     {
         [SerializeField] private float _initialBaseLife;
 
