@@ -6,11 +6,14 @@ using ChickenVSZombies.GameplayItems;
 namespace ChickenVSZombies.Characters.Chicken.Mechanics
 {
     //[RequireComponent(typeof(Chicken))]
+    [RequireComponent(typeof(Rigidbody2D))]
     public class ChickenMovement : MonoBehaviour
     {
         [SerializeField] private GameObject _initialPosition;
 
         [SerializeField] private float _chickenMoveVelocity;
+
+        private Rigidbody2D _rb2D;
 
         private ChickenHealth _chicken;
 
@@ -24,6 +27,8 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
 
         private void Awake()
         {
+            _rb2D = GetComponent<Rigidbody2D>();
+
             _chicken = GetComponent<ChickenHealth>();
         }
 
@@ -147,35 +152,35 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
             {
                 case Direction.UP:
 
-                    transform.position += new Vector3(0f, _chickenMoveVelocity) * Time.deltaTime;
+                    _rb2D.MovePosition(transform.position + new Vector3(0f, _chickenMoveVelocity) * Time.deltaTime);                    
                     break;
                 case Direction.RIGHT_UP:
 
-                    transform.position += new Vector3(_chickenMoveVelocity, _chickenMoveVelocity) * Time.deltaTime;
+                    _rb2D.MovePosition(transform.position + new Vector3(_chickenMoveVelocity, _chickenMoveVelocity) * Time.deltaTime);
                     break;
                 case Direction.RIGHT:
 
-                    transform.position += new Vector3(_chickenMoveVelocity, 0f) * Time.deltaTime;
+                    _rb2D.MovePosition(transform.position + new Vector3(_chickenMoveVelocity, 0f) * Time.deltaTime);
                     break;
                 case Direction.RIGHT_DOWN:
 
-                    transform.position += new Vector3(_chickenMoveVelocity, -_chickenMoveVelocity) * Time.deltaTime;
+                    _rb2D.MovePosition(transform.position + new Vector3(_chickenMoveVelocity, -_chickenMoveVelocity) * Time.deltaTime);
                     break;
                 case Direction.DOWN:
 
-                    transform.position += new Vector3(0f, -_chickenMoveVelocity) * Time.deltaTime;
+                    _rb2D.MovePosition(transform.position + new Vector3(0f, -_chickenMoveVelocity) * Time.deltaTime);
                     break;
                 case Direction.LEFT_DOWN:
 
-                    transform.position += new Vector3(-_chickenMoveVelocity, -_chickenMoveVelocity) * Time.deltaTime;
+                    _rb2D.MovePosition(transform.position + new Vector3(-_chickenMoveVelocity, -_chickenMoveVelocity) * Time.deltaTime);
                     break;
                 case Direction.LEFT:
 
-                    transform.position += new Vector3(-_chickenMoveVelocity, 0f) * Time.deltaTime;
+                    _rb2D.MovePosition(transform.position + new Vector3(-_chickenMoveVelocity, 0f) * Time.deltaTime);
                     break;
                 case Direction.LEFT_UP:
 
-                    transform.position += new Vector3(-_chickenMoveVelocity, _chickenMoveVelocity) * Time.deltaTime;
+                    _rb2D.MovePosition(transform.position + new Vector3(-_chickenMoveVelocity, _chickenMoveVelocity) * Time.deltaTime);
                     break;
                 default:
                     break;
