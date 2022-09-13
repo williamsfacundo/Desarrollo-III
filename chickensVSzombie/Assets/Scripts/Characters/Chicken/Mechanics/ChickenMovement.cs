@@ -41,8 +41,10 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
 
         void Update()
         {
-            InputDetection();            
-        }
+            InputDetection();
+
+            CounterRigidBody2DForces();
+        }       
 
         void FixedUpdate()
         {
@@ -201,5 +203,13 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
                 _lastChickenPosition = transform.position;
             }
         }
+
+        private void CounterRigidBody2DForces()
+        {
+            if (_rb2D.velocity != Vector2.zero)
+            {
+                _rb2D.velocity = Vector2.zero;
+            }
+        }        
     }
 }

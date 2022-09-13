@@ -44,6 +44,11 @@ namespace ChickenVSZombies.Characters.Zombies
             _rb2D.velocity = Vector2.zero;
         }
 
+        void Update()
+        {
+            CounterRigidBody2DForces();
+        }
+
         void FixedUpdate()
         {
             MoveTowardsTheTarget();            
@@ -77,6 +82,14 @@ namespace ChickenVSZombies.Characters.Zombies
         private Vector3 CalculateDirectionToMoveTowardsTheTarget() 
         {
             return Vector3.Normalize(_target.gameObject.transform.position - gameObject.transform.position);
-        }        
+        }
+
+        private void CounterRigidBody2DForces()
+        {
+            if (_rb2D.velocity != Vector2.zero)
+            {
+                _rb2D.velocity = Vector2.zero;
+            }
+        }
     }
 }
