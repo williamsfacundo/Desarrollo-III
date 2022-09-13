@@ -1,9 +1,10 @@
 using UnityEngine;
 using ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Bullets;
+using ChickenVSZombies.Interfaces;
 
 namespace ChickenVSZombies.Characters.Zombies 
 {
-    public class ZombieHealth : MonoBehaviour
+    public class ZombieHealth : MonoBehaviour, IDamageable
     {
         [SerializeField] private float _initialZombieLife;
         
@@ -23,9 +24,9 @@ namespace ChickenVSZombies.Characters.Zombies
             ZombiesInstances--;
         }
 
-        public void ReceiveDamage(float amountOfDamage) 
+        public void ReceiveDamage(float damage) 
         {
-            _life -= amountOfDamage;            
+            _life -= damage;            
 
             if (_life <= 0) 
             {
