@@ -21,6 +21,8 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
 
         private Direction _chickenMoveDirection;
 
+        private Vector3 _lastChickenPosition;
+
         private short _horizontalInputDetection;
 
         private short _verticalInputDetection;        
@@ -45,6 +47,8 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
         void FixedUpdate()
         {
             InputResponse();
+
+            ChickenChangedPosition();
         }
 
         void OnEnable()
@@ -65,6 +69,8 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
             {
                 OnChickenMoved();
             }
+
+            _lastChickenPosition = transform.position;
 
             _chickenMoveDirection = Direction.NONE;
 
@@ -97,15 +103,9 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
                     _chickenMoveDirection = Direction.NONE;
                 }
 
-
                 if (_chickenMoveDirection != Direction.NONE) 
                 { 
-                    MoveChicken();
-                    
-                    if (OnChickenMoved != null) 
-                    {
-                        OnChickenMoved();
-                    }                    
+                    MoveChicken();                                      
                 }
             }            
         }
@@ -184,6 +184,19 @@ namespace ChickenVSZombies.Characters.Chicken.Mechanics
                     break;
                 default:
                     break;
+            }
+        }
+
+        private void ChickenChangedPosition()
+        {
+            if (_lastChickenPosition != transform.position)
+            {
+                if (OnChickenMoved != null)
+                {
+                    OnChickenMoved();
+                }
+
+                _lastChickenPosition = transform.position;
             }
         }
     }
