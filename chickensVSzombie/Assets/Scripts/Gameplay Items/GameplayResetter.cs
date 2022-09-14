@@ -7,7 +7,9 @@ namespace ChickenVSZombies.GameplayItems
 {
     public class GameplayResetter : MonoBehaviour
     {
-        public static event Action OnGameplayResset;       
+        public static event Action OnGameplayResset;
+
+        public static bool ResettingGameplay = false;       
 
         void OnEnable()
         {
@@ -29,10 +31,14 @@ namespace ChickenVSZombies.GameplayItems
 
         private void ResetGameplay()
         {
+            ResettingGameplay = true;
+
             if (OnGameplayResset != null) 
             {
-                OnGameplayResset();
+                OnGameplayResset();                
             }
+
+            ResettingGameplay = false;
         }
     }
 }

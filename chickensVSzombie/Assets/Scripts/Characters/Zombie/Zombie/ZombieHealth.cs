@@ -1,6 +1,7 @@
 using UnityEngine;
 using ChickenVSZombies.Characters.Chicken.Weapons.Firearms.Bullets;
 using ChickenVSZombies.Interfaces;
+using ChickenVSZombies.GameplayItems;
 
 namespace ChickenVSZombies.Characters.Zombies 
 {
@@ -14,7 +15,7 @@ namespace ChickenVSZombies.Characters.Zombies
         
         public static ZombieAction OnZombieDeath; 
 
-        public static int ZombiesInstances = 0;
+        public static int ZombiesInstances = 0;        
 
         private float _life;        
 
@@ -27,12 +28,7 @@ namespace ChickenVSZombies.Characters.Zombies
 
         private void OnDestroy()
         {            
-            ZombiesInstances--;
-
-            if (OnZombieDeath != null) 
-            {
-                OnZombieDeath(100);
-            }
+            ZombiesInstances--;                                   
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -64,6 +60,14 @@ namespace ChickenVSZombies.Characters.Zombies
 
         public void DestroyZombie() 
         {
+            if (GameplayResetter.ResettingGameplay == false) //Fixed bug when resetting gameplay zombies are giving free points
+            {
+                if (OnZombieDeath != null)
+                {
+                    OnZombieDeath(_pointsGivenWhenKilled);
+                }
+            }
+
             Destroy(gameObject);
         }                
     }

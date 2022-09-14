@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
-using ChickenVSZombies.GameplayItems;
 using ChickenVSZombies.Characters.Zombies;
+using ChickenVSZombies.GameplayItems;
 
 namespace ChickenVSZombies.Characters.Chicken 
 {
@@ -9,7 +9,7 @@ namespace ChickenVSZombies.Characters.Chicken
     {
         private short _score;
 
-        public static event Action OnChickenScoreUp;
+        public static event Action OnChickenScoreChanged;
 
         public short Score
         {
@@ -38,19 +38,24 @@ namespace ChickenVSZombies.Characters.Chicken
             ZombieHealth.OnZombieDeath -= AddScore;
         }
 
+        public void ResetScore()
+        {
+            _score = 0;
+
+            if (OnChickenScoreChanged != null)
+            {
+                OnChickenScoreChanged();
+            }
+        }
+
         private void AddScore(short value)
         {
             _score += value;
 
-            if (OnChickenScoreUp != null) 
+            if (OnChickenScoreChanged != null)
             {
-                OnChickenScoreUp();
+                OnChickenScoreChanged();
             }
-        }
-
-        private void ResetScore() 
-        {
-            _score = 0;
-        }
+        }        
     }
 }

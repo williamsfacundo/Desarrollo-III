@@ -98,7 +98,7 @@ namespace ChickenVSZombies.Characters.Zombies
             return _spawnPoints[random].transform.position;
         }
 
-        private void InstanciateZombie(Vector3 position) // 
+        private void InstanciateZombie(Vector3 position) 
         {
             _zombieInstances[GetZombieInstancesNullIndex()] = Instantiate(_zombiePrefab, position, Quaternion.identity).GetComponent<ZombieHealth>();
         }
